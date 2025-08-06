@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Tanaman Kencur - KKN 03 UNUSIDA</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2d5016;
+            background: linear-gradient(135deg, #f0f8e8 0%, #e8f5e8 50%, #d4f1d4 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #4a7c59 0%, #2d5016 50%, #1a3409 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(225, 112, 85, 0.1);
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            font-style: italic;
+            color: #4a7c59;
+        }
+
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            align-items: center;
+        }
+
+        .plant-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(225, 112, 85, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .plant-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(74, 124, 89, 0.25);
+        }
+
+        .plant-info {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(74, 124, 89, 0.1);
+            box-shadow: 0 10px 30px rgba(74, 124, 89, 0.1);
+        }
+
+        .plant-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #2d5016;
+            margin-bottom: 1rem;
+        }
+
+        .botanical-name {
+            font-style: italic;
+            color: #4a7c59;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #2d5016;
+            text-align: justify;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(74, 124, 89, 0.1);
+            box-shadow: 0 10px 30px rgba(74, 124, 89, 0.08);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #2d5016;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #4a7c59, #2d5016);
+            border-radius: 2px;
+        }
+
+        .points-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .point-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.8rem;
+            border-radius: 15px;
+            border-left: 5px solid #4a7c59;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .point-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(74, 124, 89, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .point-item:hover::before {
+            left: 100%;
+        }
+
+        .point-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(74, 124, 89, 0.2);
+            border-left-color: #2d5016;
+        }
+
+        .point-number {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #4a7c59, #2d5016);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: 600;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .point-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #2d5016;
+            margin-bottom: 0.5rem;
+        }
+
+        .point-description {
+            color: #4a7c59;
+            line-height: 1.6;
+        }
+
+        .decorative-element {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .plant-icon {
+            font-size: 2rem;
+            color: #4a7c59;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .plant-image {
+                height: 300px;
+            }
+
+            .plant-info {
+                padding: 1.5rem;
+            }
+
+            .plant-info h2 {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .points-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .point-item {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .plant-info h2 {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .points-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Tanaman Kencur</h1>
+            <p class="subtitle">Rempah Aromatik dengan Khasiat Luar Biasa untuk Kesehatan dan Pengobatan Tradisional</p>
+        </header>
+
+        <section class="hero-section">
+            <div>
+                <img src="image/kencur.jpeg" alt="Tanaman Kencur" class="plant-image">
+            </div>
+            <div class="plant-info">
+                <h2>Kencur</h2>
+                <p class="botanical-name">Nama Ilmiah: Kaempferia galanga</p>
+                <p class="description">
+                    Kencur adalah tanaman rempah dari keluarga jahe-jahean yang telah digunakan selama 
+                    berabad-abad dalam pengobatan tradisional Indonesia. Tanaman ini memiliki rimpang 
+                    berwarna putih kecokelatan dengan aroma yang khas dan pedas. Kencur mengandung 
+                    berbagai senyawa aktif seperti minyak atsiri yang memberikan manfaat luar biasa 
+                    untuk kesehatan. Mudah ditanam di iklim tropis dan menjadi tanaman obat keluarga 
+                    yang sangat berharga dengan khasiat yang telah terbukti secara turun temurun.
+                </p>
+            </div>
+        </section>
+
+        <div class="decorative-element">
+            <div class="plant-icon">🌿</div>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">Manfaat Kencur</h2>
+            <div class="points-grid">
+                <div class="point-item">
+                    <span class="point-number">1</span>
+                    <h3 class="point-title">Mengatasi Masalah Pencernaan</h3>
+                    <p class="point-description">
+                        Kencur sangat efektif untuk mengatasi masalah pencernaan seperti kembung, mual, 
+                        dan gangguan lambung. Kandungan minyak atsiri membantu melancarkan pencernaan 
+                        dan mengurangi gas dalam perut.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">2</span>
+                    <h3 class="point-title">Meredakan Batuk dan Flu</h3>
+                    <p class="point-description">
+                        Kencur memiliki sifat ekspektoran yang membantu mengencerkan dahak dan meredakan 
+                        batuk. Sering digunakan dalam jamu tradisional untuk mengatasi gejala flu dan 
+                        infeksi saluran pernapasan.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">3</span>
+                    <h3 class="point-title">Anti-Inflamasi dan Pereda Nyeri</h3>
+                    <p class="point-description">
+                        Kandungan senyawa aktif dalam kencur memiliki sifat anti-inflamasi yang dapat 
+                        membantu meredakan nyeri otot, nyeri sendi, dan peradangan pada tubuh secara alami.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">4</span>
+                    <h3 class="point-title">Meningkatkan Nafsu Makan</h3>
+                    <p class="point-description">
+                        Kencur dapat membantu meningkatkan nafsu makan, terutama pada anak-anak dan 
+                        orang yang sedang dalam masa pemulihan. Aroma dan rasanya yang khas merangsang 
+                        produksi enzim pencernaan.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">5</span>
+                    <h3 class="point-title">Mengatasi Masuk Angin</h3>
+                    <p class="point-description">
+                        Kencur adalah obat tradisional yang sangat populer untuk mengatasi masuk angin. 
+                        Sifat hangat dan aromanya membantu melancarkan peredaran darah dan menghangatkan tubuh.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">6</span>
+                    <h3 class="point-title">Antiseptik dan Antibakteri</h3>
+                    <p class="point-description">
+                        Kencur memiliki sifat antiseptik dan antibakteri alami yang dapat membantu 
+                        melawan infeksi dan mempercepat penyembuhan luka kecil serta iritasi kulit.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="decorative-element">
+            <div class="plant-icon">🌱</div>
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">Tips Perawatan Kencur</h2>
+            <div class="points-grid">
+                <div class="point-item">
+                    <span class="point-number">1</span>
+                    <h3 class="point-title">Pemilihan Lokasi Tanam</h3>
+                    <p class="point-description">
+                        Pilih lokasi yang mendapat sinar matahari pagi namun terlindung dari sinar matahari 
+                        langsung siang hari. Kencur tumbuh optimal di tempat yang teduh sebagian dengan 
+                        sirkulasi udara yang baik.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">2</span>
+                    <h3 class="point-title">Media Tanam yang Tepat</h3>
+                    <p class="point-description">
+                        Gunakan tanah yang gembur, subur, dan memiliki drainase baik. Campurkan kompos 
+                        atau pupuk kandang dengan perbandingan 1:1 untuk meningkatkan kesuburan tanah 
+                        dan pertumbuhan rimpang yang optimal.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">3</span>
+                    <h3 class="point-title">Penyiraman Teratur</h3>
+                    <p class="point-description">
+                        Siram kencur secara teratur namun jangan sampai tergenang. Jaga kelembaban tanah 
+                        tetap stabil, terutama selama musim kemarau. Kencur membutuhkan kelembaban yang 
+                        cukup untuk pertumbuhan rimpang yang baik.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">4</span>
+                    <h3 class="point-title">Pemupukan dan Perawatan Tanah</h3>
+                    <p class="point-description">
+                        Berikan pupuk organik atau kompos setiap 2-3 bulan sekali. Lakukan penggemburan 
+                        tanah secara berkala untuk menjaga aerasi dan memudahkan pertumbuhan rimpang kencur.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">5</span>
+                    <h3 class="point-title">Pengendalian Hama dan Gulma</h3>
+                    <p class="point-description">
+                        Bersihkan gulma secara rutin di sekitar tanaman kencur. Perhatikan juga serangan 
+                        hama seperti ulat dan kutu daun. Gunakan pestisida organik jika diperlukan untuk 
+                        menjaga kesehatan tanaman.
+                    </p>
+                </div>
+                <div class="point-item">
+                    <span class="point-number">6</span>
+                    <h3 class="point-title">Waktu Panen yang Tepat</h3>
+                    <p class="point-description">
+                        Kencur dapat dipanen setelah 6-8 bulan tanam ketika daun mulai mengering. 
+                        Gali rimpang dengan hati-hati, bersihkan dari tanah, dan keringkan sebelum 
+                        disimpan atau digunakan untuk pengobatan.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="decorative-element">
+            <p>&copy; KKN 03 UNUSIDA 2025 . Dibuat dengan cinta untuk pecinta tumbuhan.</p>
+        </div>
+    </div>
+</body>
+</html>
